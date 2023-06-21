@@ -17,23 +17,20 @@ int open_file(char *filename, stack_t **stack)
 
 	if (!filename)
 	{
-		fprintf(stderr ,"Error: Can't open file %s\n", filename);
+		fprintf(stderr, "Error: Can't open file %s\n", filename);
 		exit(EXIT_FAILURE);
 	}
 	fp = fopen(filename, "r");
 	if (fp == NULL)
 	{
-		fprintf(stderr ,"Error: Can't open file %s\n", filename);
+		fprintf(stderr, "Error: Can't open file %s\n", filename);
 		exit(EXIT_FAILURE);
 	}
 	atexit(free_all);
 	while ((read = getline(&line, &len, fp)) != -1)
 	{
-		/*printf("%s", line); */
 		op = strtok(line, DELIMS);
-		/* printf("<TOKEN1> %s  %u<--\n", op, line_number); */
 		line_number++;
-		/* printf("%s (%u) ", op, line_number); */
 		if (op)
 			get_op(stack, op, line_number);
 	}
@@ -69,7 +66,7 @@ void get_op(stack_t **stack, char *op, unsigned int line_number)
 	}
 	if (strlen(op) != 0 && op[0] != '#')
 	{
-		fprintf(stderr ,"L%u: unknown instruction %s\n", line_number, op);
+		fprintf(stderr, "L%u: unknown instruction %s\n", line_number, op);
 		exit(EXIT_FAILURE);
 	}
 	/* success if you got this far */
