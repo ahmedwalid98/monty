@@ -53,6 +53,7 @@ void get_op(stack_t **stack, char *op, unsigned int line_number)
 		{"push", _push},
 		{"pall", _pall},
 		{"pint", _pint},
+		{"pop", _pop},
 		{NULL, NULL}
 	};
 
