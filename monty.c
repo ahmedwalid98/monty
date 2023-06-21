@@ -1,5 +1,4 @@
 #include "monty.h"
-
 glob_t glob;
 
 /**

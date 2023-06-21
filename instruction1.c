@@ -1,7 +1,7 @@
 #include "monty.h"
 
 /**
- * instruction_push - pushes an element to the stack
+ * _push - pushes an element to the stack
  * @stack: double pointer to the first node
  * @line_number: value of new node
  * Return: nothing
@@ -33,7 +33,7 @@ void _push(stack_t **stack, unsigned int line_number)
 }
 
 /**
- * instruction_pall - prints all values on the stack, starting from top
+ * _pall - prints all values on the stack, starting from top
  * @stack: double pointer to the first node
  * @line_number: value of new node
  * Return: nothing
