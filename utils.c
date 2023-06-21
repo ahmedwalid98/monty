@@ -17,13 +17,13 @@ int open_file(char *filename, stack_t **stack)
 
 	if (!filename)
 	{
-		printf("Error: Can't open file %s\n", filename);
+		fprintf(stderr ,"Error: Can't open file %s\n", filename);
 		exit(EXIT_FAILURE);
 	}
 	fp = fopen(filename, "r");
 	if (fp == NULL)
 	{
-		printf("Error: Can't open file %s\n", filename);
+		fprintf(stderr ,"Error: Can't open file %s\n", filename);
 		exit(EXIT_FAILURE);
 	}
 	atexit(free_all);
@@ -55,6 +55,7 @@ void get_op(stack_t **stack, char *op, unsigned int line_number)
 	instruction_t all_ops[] = {
 		{"push", _push},
 		{"pall", _pall},
+		{"pint", _pint},
 		{NULL, NULL}
 	};
 
@@ -68,7 +69,7 @@ void get_op(stack_t **stack, char *op, unsigned int line_number)
 	}
 	if (strlen(op) != 0 && op[0] != '#')
 	{
-		printf("L%u: unknown instruction %s\n", line_number, op);
+		fprintf(stderr ,"L%u: unknown instruction %s\n", line_number, op);
 		exit(EXIT_FAILURE);
 	}
 	/* success if you got this far */

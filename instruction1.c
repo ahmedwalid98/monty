@@ -14,13 +14,13 @@ void _push(stack_t **stack, unsigned int line_number)
 
 	if (element == NULL)
 	{
-		printf("Error: malloc failed\n");
+		fprintf(stderr, "Error: malloc failed\n");
 		exit(EXIT_FAILURE);
 	}
 	op = strtok(NULL, DELIMS);
 	if (op == NULL || stack == NULL)
 	{
-		printf("L%u: usage: push integer\n", line_number);
+		fprintf(stderr, "L%u: usage: push integer\n", line_number);
 		exit(EXIT_FAILURE);
 	}
 	num = _strtol(op, line_number);
@@ -48,4 +48,19 @@ void _pall(stack_t **stack, unsigned int line_number)
 		printf("%d\n", element->n);
 		element = element->next;
 	}
+}
+/**
+ * _pint - Print last node
+ * @stack: Double linked list
+ * @line_number: File line execution
+ */
+void _pint(stack_t **stack, unsigned int line_number)
+{
+	if (!*stack)
+	{
+		fprintf(stderr, "L%u: can't pint, stack empty\n", line_number);
+		free_all();
+		exit(EXIT_FAILURE);
+	}
+	printf("%d\n", (*stack)->n);
 }
